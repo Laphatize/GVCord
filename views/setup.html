@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.browser.min.js"></script>
+
+    <script src="./js/setup.js?52"></script>
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <title>Setup</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:maroon;color:white;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="#">GVCord</a>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Setup <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://discord.com/oauth2/authorize?client_id=751225929426272276&permissions=8&scope=bot">Invite</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Demo</a>
+              </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <button class="btn  btn-outline-light my-2 my-sm-0" type="submit"><i class="fab fa-github"></i> Github</button>
+          </form>
+        </div>
+      </nav>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Setup GVCord</h1>
+                <p class="lead">Make your server locked for just GV students with just a few clicks.</p>
+            </div>
+</div>
+
+<div class="container">
+
+  <div id="login">
+  <h2>Please login to get started.</h2>
+  <a href='https://discord.com/api/oauth2/authorize?client_id=751225929426272276&redirect_uri=https%3A%2F%2Fgvcord.pranavramesh.dev%2Fsetup%2Fcallback&response_type=code&scope=identify%20guilds%20email' class="btn btn-outline-dark btn-lg">Login with Discord</a>
+</div>
+  <div style="display:none;" id="guilds">
+  <h2 id="heady">Your Guilds:</h2>
+   
+    </div>
+
+    <div style="display:none;" id="new">
+      
+      <h2>Create a verification channel</h2>
+   
+
+      <div class="form-group">
+        <label for="c" class="bmd-label-floating">Channel Name</label>
+        <input class="form-control" id="c">
+      </div>
+      <span class="form-group bmd-form-group"> <!-- needed to match padding for floating labels -->
+        <button type="submit" onclick="done()" class="btn btn-outline-dark ">Create</button>
+      </span>
+    </div>
+    
+
+    <div style="display:none;" id="done">
+      
+      <h2>You're all good to go!</h2>
+      <p> Don't forget to make sure that channels can only be viewed with those with the GV role.</p>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+  </body>
+</html>

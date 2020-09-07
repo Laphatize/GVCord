@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+    </style>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <title>Verify</title>
+</head>
+
+<body style="background-color:maroon;color:white;">
+
+    <br>
+    <div class="container center">
+        <div style="background-color:white;color:maroon;padding:2%;border-radius:25px;" class="centered">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/13/Garnet_Valley_School_District_Logo.gif" width="70">
+        
+        
+        <div id="plsverify">
+        
+        <h5>Please login via Google with using your <b>GV</b> email.</h5> <br>
+        <div class="col s12 m6 offset-m3 center-align">
+            <a class="oauth-container btn  btn-outline-dark  white black-text" onclick="go()" style="text-transform:none">
+                <div class="left">
+                    <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                </div>
+                Login with Google
+            </a><br><br>
+            <button id="egg" style="display:none;" class="btn" onclick="leave();">Logout of <span
+                    id="email"></span></button>
+        <br></div>
+
+        <div style='display:none;' id="success">
+            <h5>You are now verified.</h5>
+        </div>
+                    <a href="https://pranavramesh.dev" style="color:maroon;">Terms of Service & Privacy Policy </a>
+
+                </div>
+
+    </div>
+
+    </div>
+    
+
+</div>
+  
+    </div>
+    
+    <br><br><br><br>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCdDIswIpeeR8y3el5VUnKCNY1e6oIYozU",
+            authDomain: "gvsd-fa18b.firebaseapp.com",
+            databaseURL: "https://gvsd-fa18b.firebaseio.com",
+            projectId: "gvsd-fa18b",
+            storageBucket: "gvsd-fa18b.appspot.com",
+            messagingSenderId: "437206258451",
+            appId: "1:437206258451:web:6d09f14916786ab58cc0e6",
+            measurementId: "G-0R4JKSXZTL"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        function leave() {
+            firebase.auth().signOut().then(function () {
+                window.alert("You have been logged out.");
+                window.location.href = "./"
+            }).catch(function (error) {
+                window.alert(error)
+            });
+        }
+        function gup(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+if (!gup('uid')) {
+    window.location.href = "./setup"
+}
+        function go() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider).then(function (result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+                window.alert(user.email)
+                console.log(user)
+                if ((user.email).split("@")[1] != "garnetvalley.org") {
+                   
+                    window.alert("You must login with your @garnetvalley.org email!")
+                    document.getElementById("egg").style.display = "block";
+                    document.getElementById("email").innerHTML = user.email
+
+                } else {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                    
+                        }
+                    };
+                      xhttp.open("GET", `./validate?userid=${gup('uid')}&email=${user.email}&g=${gup('gid')}&pfp=${user.photoURL}&name=${user.displayName}`, true);
+                    xhttp.send();
+                    console.log(user.photoUrl)
+                    
+                    window.alert("You are now verified. Please close this tab.")
+                }
+            }).catch(function (error) {
+              //  window.alert(error.message)
+            });
+        }
+    </script>
+
+</body>
+
+</html>
