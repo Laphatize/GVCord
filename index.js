@@ -164,7 +164,7 @@ var link =  "https://gvcord.pranavramesh.dev/?uid=" + member.id + "&gid=" + memb
   })
 
 
-client.login('NzUxMjI1OTI5NDI2MjcyMjc2.X1F_qg.z9LM0fe274FcRw4GQFIJ23HdVWk');
+client.login('');
 
 
 
