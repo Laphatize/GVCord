@@ -35,7 +35,7 @@ app.get('/api/fetchToken', function (req, res) {
 
   const data = {
     client_id: '751225929426272276',
-    client_secret: 'yPCmNtLArT34YjGlDYGewW-E-9KrpKcR',
+    client_secret: '',
     grant_type: 'authorization_code',
     redirect_uri: 'https://gvcord.pranavramesh.dev/setup/callback',
     code: accessCode,
